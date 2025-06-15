@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar sesión</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="image-section">
+      <div class="placeholder-image">
+        <span>Imagen</span>
+      </div>
+    </div>
+    <div class="form-section">
+      <h2>Iniciar sesión</h2>
+      <form id="loginForm">
+        <label for="correo">Correo</label>
+        <input type="email" id="correo" placeholder="mi@ejemplo.com" required />
+
+        <label for="contrasena">Contraseña</label>
+        <input type="password" id="contrasena" required />
+
+        <button type="submit" class="btn-login">Inicio</button>
+        <button type="button" class="btn-recover" onclick="recuperarContrasena()">Recuperar contraseña</button>
+      </form>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
