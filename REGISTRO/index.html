@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear cuenta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Crear cuenta</h1>
+    <form id="registroForm">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" placeholder="Introduce tu nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" placeholder="+57 3123456789" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Introduce tu correo" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="Introduce tu contraseña" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirmar contraseña</label>
+        <input type="password" id="confirmPassword" placeholder="Confirma tu contraseña" required>
+      </div>
+
+      <div class="form-group checkbox">
+        <input type="checkbox" id="confirmacionCorreo">
+        <label for="confirmacionCorreo">Enviar confirmación de registro a correo</label>
+      </div>
+
+      <button type="submit">Iniciar sesión</button>
+
+      <p class="login-link">¿Ya tienes cuenta? <a href="#">Iniciar sesión</a>.</p>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
