@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title> Proveedores - Suono Logistic</title>
+  <link rel="stylesheet" href="proveedores.css" />
+</head>
+<body>
+  <header>
+    <h1>Proveedores</h1>
+    <p>Suono Logistic</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Registrar Proveedor</h2>
+      <form id="providerForm">
+        <input type="text" id="nombre" placeholder="Nombre del proveedor" required />
+        <select id="servicio" required>
+          <option value="">Tipo de servicio</option>
+          <option value="Sonido">Sonido</option>
+          <option value="Catering">Catering</option>
+          <option value="Iluminación">Iluminación</option>
+          <option value="Transporte">Transporte</option>
+          <option value="Otros">Otros</option>
+        </select>
+        <input type="text" id="contacto" placeholder="Teléfono o celular" required />
+        <input type="email" id="correo" placeholder="Correo electrónico" required />
+        <select id="estado" required>
+          <option value="">Estado</option>
+          <option value="Activo">Activo</option>
+          <option value="Inactivo">Inactivo</option>
+        </select>
+        <button type="submit">Agregar Proveedor</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Proveedores Registrados</h2>
+      <table id="providerTable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Servicio</th>
+            <th>Contacto</th>
+            <th>Correo</th>
+            <th>Estado</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="proveedores.js"></script>
+</body>
+</html>

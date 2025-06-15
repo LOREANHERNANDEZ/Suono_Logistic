@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión de Roles y Accesos - Suono Logistic</title>
+  <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+  <header>
+    <h1>Gestión de Roles y Accesos</h1>
+    <p>Suono Logistic</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Registrar Empleado</h2>
+      <form id="employeeForm">
+        <input type="text" id="nombre" placeholder="Nombre completo" required />
+        <input type="email" id="correo" placeholder="Correo electrónico" required />
+        <input type="text" id="cargo" placeholder="Cargo" required />
+        <select id="rol" required>
+          <option value="">Seleccionar Rol</option>
+          <option value="Administrador">Administrador</option>
+          <option value="Coordinador">Coordinador</option>
+          <option value="Logístico">Logístico</option>
+          <option value="Asistente">Asistente</option>
+        </select>
+        <button type="submit">Agregar Empleado</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Empleados Registrados</h2>
+      <table id="employeeTable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Cargo</th>
+            <th>Rol</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="app2.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cotizador de Eventos - Suono Logistic</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Cotizador de Servicios para Eventos</h1>
+    <p>Suono Logistic</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Elige los servicios para tu evento</h2>
+      <form id="cotizadorForm">
+        <select id="servicio" required>
+          <option value="">Selecciona un servicio</option>
+          <option value="Sonido">Sonido - $500.00</option>
+          <option value="Iluminación">Iluminación - $400.00</option>
+          
+          <option value="Logística">Logística - $600.00</option>
+          <option value="Transporte">Transporte - $300.00</option>
+        </select>
+        <input type="number" id="cantidad" placeholder="Cantidad" min="1" required />
+        <button type="submit">Agregar Servicio</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Servicios Seleccionados</h2>
+      <table id="cotizacionTabla">
+        <thead>
+          <tr>
+            <th>Servicio</th>
+            <th>Cantidad</th>
+            <th>Precio Unitario</th>
+            <th>Subtotal</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="totales">
+        <p><strong>Total estimado:</strong> $<span id="totalCotizacion">0.00</span></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="cotizaciones.js"></script>
+</body>
+</html>

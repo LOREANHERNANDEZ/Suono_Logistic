@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión de Logística de Eventos - Suono Logistic</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Gestión de Logística de Eventos</h1>
+    <p>Suono Logistic</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Registrar Evento</h2>
+      <form id="eventForm">
+        <input type="text" id="nombre" placeholder="Nombre del evento" required />
+        <input type="date" id="fecha" required />
+        <input type="text" id="lugar" placeholder="Lugar del evento" required />
+        <input type="text" id="responsable" placeholder="Responsable" required />
+        <textarea id="recursos" placeholder="Recursos necesarios" rows="3"></textarea>
+        <button type="submit">Registrar</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Eventos Registrados</h2>
+      <table id="eventTable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Lugar</th>
+            <th>Responsable</th>
+            <th>Recursos</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

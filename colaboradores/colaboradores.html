@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión de Colaboradores - Suono Logistic</title>
+  <link rel="stylesheet" href="colaboradores.css" />
+</head>
+<body>
+  <header>
+    <h1>Gestión de Colaboradores</h1>
+    <p>Suono Logistic</p>
+  </header>
+
+  <main>
+    <section class="form-section">
+      <h2>Registrar Colaborador</h2>
+      <form id="collaboratorForm">
+        <input type="text" id="nombre" placeholder="Nombre completo" required />
+        <input type="text" id="documento" placeholder="Documento de identidad" required />
+        <input type="text" id="telefono" placeholder="Teléfono" required />
+        <select id="area" required>
+          <option value="">Área de trabajo</option>
+          <option value="Montaje">Montaje</option>
+          <option value="Técnica">Técnica</option>
+          <option value="Logística">Logística</option>
+          <option value="Apoyo general">Apoyo general</option>
+        </select>
+        <select id="disponibilidad" required>
+          <option value="">Disponibilidad</option>
+          <option value="Disponible">Disponible</option>
+          <option value="No disponible">No disponible</option>
+        </select>
+        <button type="submit">Agregar Colaborador</button>
+      </form>
+    </section>
+
+    <section class="list-section">
+      <h2>Colaboradores Registrados</h2>
+      <table id="collaboratorTable">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Documento</th>
+            <th>Teléfono</th>
+            <th>Área</th>
+            <th>Disponibilidad</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="colaboradores.js"></script>
+</body>
+</html>
