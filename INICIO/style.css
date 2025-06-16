@@ -1,0 +1,43 @@
+body {
+  background-color: #f4f4f4;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+}
+
+.hero-section {
+  height: calc(100vh - 150px);
+  background-color: #f4f4f4;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background-color: #25d366;
+  color: white;
+  font-size: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  background-color: #1ebe5d;
+}
+
+
+.nav-link {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #ffffff !important;       /* Cambia esto por el color que prefieras */
+  background-color: #3842b5;       /* Fondo al pasar el cursor */
+  border-radius: 5px;
+}
