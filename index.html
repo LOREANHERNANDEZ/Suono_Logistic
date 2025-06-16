@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portal de Reservas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Portal de reservas para clientes</h1>
+    <form id="reservaForm">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="tipo">Tipo de evento</label>
+          <input type="text" id="tipo" name="tipo" placeholder="Ingresa el tipo de evento" required>
+        </div>
+
+        <div class="form-group">
+          <label for="fecha">Fecha</label>
+          <input type="date" id="fecha" name="fecha" required>
+        </div>
+
+        <div class="form-group">
+          <label for="ubicacion">Ubicación</label>
+          <input type="text" id="ubicacion" name="ubicacion" placeholder="Ingresa la ubicación" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" placeholder="Ingresa tu teléfono" required>
+        </div>
+
+        <div class="form-group">
+          <label for="comprobante">Comprobante de abono</label>
+          <input type="file" id="comprobante" name="comprobante">
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="btn cancel" onclick="cancelar()">Cancelar</button>
+        <button type="submit" class="btn confirm">Confirmar</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
