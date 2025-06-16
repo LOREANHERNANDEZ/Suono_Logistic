@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Venta</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Registro de Venta</h1>
+
+    <div class="fecha">
+      <label for="fecha">Fecha y Hora:</label>
+      <input type="date" id="fecha" value="2025-06-03">
+    </div>
+
+    <div class="form-row">
+      <div class="logo">👤</div>
+      <div class="input-group">
+        <label>Usuario:</label>
+        <input type="text" placeholder="Nombre de usuario">
+      </div>
+      <div class="input-group">
+        <label>Rol:</label>
+        <input type="text" placeholder="Rol del usuario">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="input-group">
+        <label>Cliente:</label>
+        <input type="text" placeholder="Nombre de cliente">
+      </div>
+      <div class="input-group">
+        <label>Teléfono:</label>
+        <input type="text" placeholder="Número de teléfono">
+      </div>
+      <div class="input-group">
+        <label>Correo:</label>
+        <input type="email" placeholder="Correo electrónico del cliente">
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label>Ítems Vendidos:</label>
+      <input type="text" placeholder="Lista de productos o servicios">
+    </div>
+
+    <div class="input-group">
+      <label>Cantidad:</label>
+      <input type="number" placeholder="Cantidad de ítems">
+    </div>
+
+    <div class="input-group">
+      <label>Precio Unitario:</label>
+      <input type="number" placeholder="Precio por unidad">
+    </div>
+
+    <div class="input-group">
+      <label>Descuento (si aplica):</label>
+      <input type="number" placeholder="Monto del descuento">
+    </div>
+
+    <div class="input-group">
+      <label>Impuestos:</label>
+      <input type="number" placeholder="Monto de impuestos">
+    </div>
+
+    <div class="input-group">
+      <label>Total:</label>
+      <input type="number" placeholder="Total de la venta">
+    </div>
+
+    <div class="input-group">
+      <label>Método de Pago:</label>
+      <select>
+        <option disabled selected>Selecciona método de pago</option>
+        <option>Tarjeta</option>
+        <option>Efectivo</option>
+        <option>Transferencia</option>
+      </select>
+    </div>
+
+    <div class="button-row">
+      <button onclick="exportar()">📄 Exportar Comprobante</button>
+      <button onclick="enviarCorreo()">✉️ Enviar Por Correo</button>
+      <button onclick="cancelar()">❌ Cancelar</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
