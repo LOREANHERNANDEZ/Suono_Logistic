@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+}
+
+.recover-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recover-card {
+  background-color: #fcfcfc;
+  padding: 40px;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.icon-user {
+  width: 70px;
+  height: 70px;
+  background-color: #7a7f8b;
+  color: white;
+  border-radius: 50%;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+h2 {
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+form {
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-reset {
+  width: 100%;
+  padding: 12px;
+  background-color: #3842b5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-reset:hover {
+  background-color: #000000;
+}
+
+.volver {
+  margin-top: 20px;
+}
+
+.volver a {
+  color: #444;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.volver a:hover {
+  text-decoration: underline;
+}

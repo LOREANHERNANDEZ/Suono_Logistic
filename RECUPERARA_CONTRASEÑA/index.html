@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recuperar Contraseña</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="recover-container">
+    <div class="recover-card">
+      <div class="icon-user">
+        <span>👤</span>
+      </div>
+      <h2>Recuperar Contraseña</h2>
+      <form id="resetForm">
+        <label for="newPass">Nueva contraseña</label>
+        <input type="password" id="newPass" placeholder="Introduzca su nueva contraseña" required minlength="8" />
+
+        <label for="confirmPass">Confirmar Contraseña</label>
+        <input type="password" id="confirmPass" placeholder="Confirme su nueva contraseña" required minlength="8" />
+
+        <button type="submit" class="btn-reset">Restablecer Contraseña</button>
+      </form>
+      <p class="volver">
+        <a href="index.html">Volver a inicio de sesión</a>
+      </p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
