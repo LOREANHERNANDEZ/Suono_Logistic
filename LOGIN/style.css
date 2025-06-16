@@ -63,26 +63,26 @@ input {
 .btn-login, .btn-recover {
   padding: 10px;
   margin-top: 5px;
-  background-color: #4a5261;
+  background-color: #3842b5;
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .btn-recover {
-  background-color: #4a5261;
+  background-color: #3842b5;
   width: fit-content;
   padding: 8px 16px;
   margin-top: 10px;
 }
 
 .btn-login:hover {
-  background-color: #313640;
+  background-color: #000000;
   transition: background-color 0.3s ease;
 }
 
 .btn-recover:hover {
-  background-color: #313640;
+  background-color: #000000;
   transition: background-color 0.3s ease;
 }
 
