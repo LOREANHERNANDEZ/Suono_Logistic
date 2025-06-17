@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventario en tiempo real</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Inventario en tiempo real</h1>
+
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="Buscar">
+    </div>
+
+    <div class="dropdown">
+      <button class="dropdown-button">Realizar inventario</button>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Categoria</th>
+          <th>Cantidad</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Teclado</td>
+          <td>5</td>
+          <td><span class="status disponible">DISPONIBLE</span></td>
+        </tr>
+        <tr>
+          <td>Escritorio</td>
+          <td>3</td>
+          <td><span class="status agotado">AGOTADO</span></td>
+        </tr>
+        <tr>
+          <td>Silla</td>
+          <td>10</td>
+          <td><span class="status bajo-stock">BAJO STOCK</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <footer>
+      <p><strong></strong></p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
