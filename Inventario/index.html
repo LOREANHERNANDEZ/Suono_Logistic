@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventario</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Inventario</h1>
+    <button class="btn-registrar">Registrar equipo</button>
+
+    <label for="ubicacion">Ubicacion</label>
+    <select id="ubicacion">
+      <option value="todas">Todas</option>
+    </select>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>ID</th>
+          <th>Descripcion</th>
+          <th>Cantidad</th>
+          <th>Fecha compra</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-equipos">
+        <!-- Aquí irá el contenido dinámico -->
+      </tbody>
+    </table>
+  </div>
+
+  <footer>
+    <p>Made with <span class="visily">Visily</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Administrativo</title>
+  <link rel="stylesheet" href="/paneladmi/paneladmi.css" />
+</head>
+<body>
+  <div class="sidebar">
+    <div id="usuario-info" style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+      <span style="font-size:48px;vertical-align:middle;">&#128100;</span>
+      <span id="nombre-usuario" style="font-size:22px;color:#b089ff;">Panel</span>
+    </div>
+    <ul>
+      <li class="nav-link active" data-section="dashboard">Panel</li>
+      <li class="nav-link" data-section="seccion-eventos">Eventos</li>
+      <li class="nav-link" data-section="seccion-clientes">Clientes</li>
+      <li class="nav-link" data-section="inventario">Inventario</li>
+      <li class="nav-link" data-section="reservas">Reservas</li>
+      <li class="nav-link" data-section="colaboradores">Colaboradores</li>
+      <li class="nav-link" data-section="proveedores">Proveedores</li>
+      <li class="nav-link" data-section="reportes">Reportes</li>
+      <li class="nav-link" data-section="pqr">PQR</li>
+      <li class="nav-link" id="cerrar-sesion" data-section="configuracion">
+        <a href="#" id="btn-cerrar-sesion" class="btn-cerrar-sesion" style="display:block;width:100%;background:linear-gradient(90deg,#6c3ef5,#9d5cff);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:bold;cursor:pointer;transition:all 0.3s ease;margin-top:10px;text-align:center;">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="main">
+    <div class="header">
+      <h1>Panel Administrativo</h1>
+      <div class="actions">
+        <div class="search-box">
+          <span class="search-icon">&#128269;</span>
+          <input type="text" placeholder="Buscar..." />
+        </div>
+        <button>Nuevo Evento</button>
+        <button>Nueva Cotización</button>
+        <a href="/insertar" class="btn-back">Registrar</a>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- DASHBOARD PRINCIPAL -->
+      <div class="card section" id="dashboard">
+        <h3>Próximos Eventos</h3>
+        <div class="event">Evento 1 - 17/05/2024 · Ubicación / Cliente</div>
+        <div class="event">Evento 2 - 17/05/2024 · Ubicación / Cliente</div>
+        <div class="event">Evento 3 - 17/05/2024 · Ubicación / Cliente</div>
+      </div>
+
+      <div class="card section" id="dashboard">
+        <h3>Disponibilidad de Equipos</h3>
+        <p>Iluminación: Disponible</p>
+        <p>Pantallas: Disponible</p>
+        <p>Sonido: En uso</p>
+      </div>
+
+      <div class="card section" id="dashboard">
+        <h3>Cotizaciones Recientes</h3>
+        <p>Cliente A - #00842 - Aceptada</p>
+        <p>Cliente B - #00841 - Pendiente</p>
+        <p>Cliente C - #00840 - Aceptada</p>
+      </div>
+
+      <!-- CLIENTES -->
+      <section id="seccion-clientes" class="section" style="display: none;">
+        <div style="width:100%;margin-left:0;padding:0;">
+          <h3 style="color:#b089ff;margin-bottom:20px;text-align:left;">Gestión de Clientes</h3>
+          <form id="form-cliente" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+            <input type="text" id="nombre" placeholder="Nombre" required />
+            <input type="email" id="email" placeholder="Correo" required />
+            <button type="submit" style="width:150px;align-self:flex-start;">Agregar Cliente</button>
+          </form>
+          <table class="table" id="tabla-clientes" style="width:100%;border-radius:8px;overflow:hidden;margin-top:0;">
+            <thead>
+              <tr style="background:#2d1846;color:#fff;">
+                <th style="width:50%">Nombre</th>
+                <th style="width:35%">Correo</th>
+                <th style="width:15%">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="clientes-body"></tbody>
+          </table>
+
+          <!-- PAGINACIÓN (solo agregado) -->
+          <div class="paginacion" data-tbody="clientes-body" style="margin-top:10px;text-align:center;">
+            <button class="btn-prev">⬅️</button>
+            <span class="pagina-info"></span>
+            <button class="btn-next">➡️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EVENTOS -->
+      <section id="seccion-eventos" class="section" style="display: none;">
+        <div style="width:100%;margin-left:0;padding:0;">
+          <h3 style="color:#b089ff;margin-bottom:20px;text-align:left;">Gestión de Eventos</h3>
+          <form id="form-evento" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+            <input type="text" id="nombre-evento" placeholder="Nombre del Evento" required />
+            <input type="date" id="fecha-evento" required style="width:220px;max-width:100%;display:block;margin-bottom:0;" />
+            <input type="text" id="ubicacion-evento" placeholder="Ubicación" required />
+            <textarea id="descripcion-evento" placeholder="Descripción" required></textarea>
+            <button type="submit" style="width:220px;align-self:flex-start;">Agregar Evento</button>
+          </form>
+          <table class="table" id="tabla-eventos" style="width:100%;border-radius:8px;overflow:hidden;margin-top:0;">
+            <thead>
+              <tr style="background:#2d1846;color:#fff;">
+                <th style="width:25%">Nombre del Evento</th>
+                <th style="width:25%">Fecha</th>
+                <th style="width:25%">Ubicación</th>
+                <th style="width:25%">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="eventos-body"></tbody>
+          </table>
+
+          <!-- PAGINACIÓN (solo agregado) -->
+          <div class="paginacion" data-tbody="eventos-body" style="margin-top:10px;text-align:center;">
+            <button class="btn-prev">⬅️</button>
+            <span class="pagina-info"></span>
+            <button class="btn-next">➡️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- INVENTARIO -->
+      <section id="inventario" class="section" style="display: none;">
+        <div class="card">
+          <h3>Gestión de Inventario</h3>
+          <form id="form-inventario">
+            <input type="text" id="equipo" placeholder="Nombre del equipo" required />
+            <input type="number" id="cantidad" placeholder="Cantidad" min="1" required />
+            <input type="text" id="descripcion-inventario" placeholder="Descripción" />
+            <input type="text" id="ubicacion-inventario" placeholder="Ubicación" />
+            <button type="submit" class="button">Agregar</button>
+          </form>
+          <table class="table" id="tabla-inventario">
+            <thead>
+              <tr>
+                <th>Equipo</th>
+                <th>Cantidad</th>
+                <th>Descripción</th>
+                <th>Ubicación</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <!-- PAGINACIÓN (solo agregado) - apunta al id de la tabla -->
+          <div class="paginacion" data-tbody="tabla-inventario" style="margin-top:10px;text-align:center;">
+            <button class="btn-prev">⬅️</button>
+            <span class="pagina-info"></span>
+            <button class="btn-next">➡️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROVEEDORES -->
+      <section id="proveedores" class="section" style="display: none;">
+        <div style="width:100%;margin-left:0;padding:0;">
+          <h3 style="color:#b089ff;margin-bottom:20px;text-align:left;">Gestión de Proveedores</h3>
+          <form id="form-proveedores" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+            <input type="text" id="proveedores-nombre" placeholder="Nombre de la Empresa" required />
+            <input type="email" id="proveedores-email" placeholder="Correo de Contacto" required />
+            <input type="text" id="proveedores-telefono" placeholder="Teléfono" required />
+            <button type="submit" style="width:150px;align-self:flex-start;">Agregar</button>
+          </form>
+          <table class="table" id="tabla-proveedores" style="width:100%;border-radius:8px;overflow:hidden;margin-top:0;">
+            <thead>
+              <tr style="background:#2d1846;color:#fff;">
+                <th style="width:25%">Empresa</th>
+                <th style="width:25%">Email</th>
+                <th style="width:25%">Teléfono</th>
+                <th style="width:25%">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="proveedores-body"></tbody>
+          </table>
+
+          <!-- PAGINACIÓN (solo agregado) -->
+          <div class="paginacion" data-tbody="proveedores-body" style="margin-top:10px;text-align:center;">
+            <button class="btn-prev">⬅️</button>
+            <span class="pagina-info"></span>
+            <button class="btn-next">➡️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RESERVAS -->
+      <section id="reservas" class="section" style="display: none;">
+        <div style="width:100%;margin-left:0;padding:0;">
+          <h3 style="color:#b089ff;margin-bottom:20px;text-align:left;">Gestión de Reservas</h3>
+          <form id="form-reservas" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+            <input type="text" id="reservas-campo1" placeholder="Nombre del Cliente" required />
+            <input type="date" id="reservas-campo2" required style="width:100%;max-width:350px;display:block;margin-bottom:0;background:#1e1b2e;color:#fff;border:1px solid #6c3ef5;border-radius:8px;padding:10px 14px;font-size:14px;box-shadow:inset 0 0 8px rgba(108,62,245,0.3);" />
+            <input type="text" id="reservas-campo3" placeholder="Servicio Reservado" required />
+            <button type="submit" class="button" style="width:220px;align-self:flex-start;">Agregar</button>
+          </form>
+          <table class="table" id="tabla-reservas" style="width:100%;border-radius:8px;overflow:hidden;margin-top:0;">
+            <thead>
+              <tr style="background:#2d1846;color:#fff;">
+                <th style="width:25%">Cliente</th>
+                <th style="width:25%">Fecha</th>
+                <th style="width:25%">Servicio</th>
+                <th style="width:25%">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="reservas-body"></tbody>
+          </table>
+
+          <!-- PAGINACIÓN (solo agregado) -->
+          <div class="paginacion" data-tbody="tabla-reservas" style="margin-top:10px;text-align:center;">
+            <button class="btn-prev">⬅️</button>
+            <span class="pagina-info"></span>
+            <button class="btn-next">➡️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLABORADORES -->
+      <section id="colaboradores" class="section" style="display: none;">
+        <div style="width:100%;margin-left:0;padding:0;">
+          <h3 style="color:#b089ff;margin-bottom:20px;text-align:left;">Gestión de Colaboradores</h3>
+          <form id="form-colaboradores" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+            <input type="text" id="colaboradores-campo1" placeholder="Nombre Completo" required />
+            <input type="text" id="colaboradores-campo2" placeholder="Rol" required />
+            <input type="text" id="colaboradores-campo3" placeholder="Contacto" required />
+            <button type="submit" class="button" style="width:220px;align-self:flex-start;">Agregar</button>
+          </form>
+          <table class="table" id="tabla-colaboradores" style="width:100%;border-radius:8px;overflow:hidden;margin-top:0;">
+            <thead>
+              <tr style="background:#2d1846;color:#fff;">
+                <th style="width:25%">Nombre</th>
+                <th style="width:25%">Rol</th>
+                <th style="width:25%">Contacto</th>
+                <th style="width:25%">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="colaboradores-body"></tbody>
+          </table>
+
+          <!-- PAGINACIÓN (solo agregado) -->
+          <div class="paginacion" data-tbody="tabla-colaboradores" style="margin-top:10px;text-align:center;">
+            <button class="btn-prev">⬅️</button>
+            <span class="pagina-info"></span>
+            <button class="btn-next">➡️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- REPORTES -->
+      <section id="reportes" class="section" style="display: none;">
+        <div style="width:100%;margin-left:0;padding:0;">
+          <h3 style="color:#b089ff;margin-bottom:20px;text-align:left;">Gestión de Reportes</h3>
+          <form id="form-reportes" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+            <input type="text" id="reportes-campo1" placeholder="Título del Reporte" required />
+            <textarea id="reportes-campo2" placeholder="Descripción del Reporte" required></textarea>
+            <input type="date" id="reportes-campo3" required style="width:100%;max-width:350px;display:block;margin-bottom:0;background:#1e1b2e;color:#fff;border:1px solid #6c3ef5;border-radius:8px;padding:10px 14px;font-size:14px;box-shadow:inset 0 0 8px rgba(108,62,245,0.3);" />
+            <button type="submit" class="button" style="width:220px;align-self:flex-start;">Agregar</button>
+          </form>
+          <table class="table" id="tabla-reportes" style="width:100%;border-radius:8px;overflow:hidden;margin-top:0;">
+            <thead>
+              <tr style="background:#2d1846;color:#fff;">
+                <th style="width:25%">Título</th>
+                <th style="width:25%">Descripción</th>
+                <th style="width:25%">Fecha</th>
+                <th style="width:25%">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="reportes-body"></tbody>
+          </table>
+
+          <!-- PAGINACIÓN (solo agregado) -->
+          <div class="paginacion" data-tbody="tabla-reportes" style="margin-top:10px;text-align:center;">
+            <button class="btn-prev">⬅️</button>
+            <span class="pagina-info"></span>
+            <button class="btn-next">➡️</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- PQR -->
+      <section id="pqr" class="section" style="display: none;">
+        <div style="width:100%;margin-left:0;padding:0;">
+          <h3 style="color:#b089ff;margin-bottom:20px;text-align:left;">Gestión de PQR</h3>
+          <form id="form-pqr" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px;">
+            <input type="text" id="pqr-campo1" placeholder="Nombre del Usuario" required />
+            <select id="pqr-campo2" required style="width:220px;max-width:100%;display:block;margin-bottom:0;">
+              <option value="">Tipo de PQR</option>
+              <option value="Petición">Petición</option>
+              <option value="Queja">Queja</option>
+              <option value="Reclamo">Reclamo</option>
+            </select>
+            <textarea id="pqr-campo3" placeholder="Descripción" required></textarea>
+            <button type="submit" class="button" style="width:220px;align-self:flex-start;">Agregar</button>
+          </form>
+          <table class="table" id="tabla-pqr" style="width:100%;border-radius:8px;overflow:hidden;margin-top:0;">
+            <thead>
+              <tr style="background:#2d1846;color:#fff;">
+                <th style="width:25%">Usuario</th>
+                <th style="width:25%">Tipo</th>
+                <th style="width:25%">Descripción</th>
+                <th style="width:25%">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="pqr-body"></tbody>
+          </table>
+
+          <!-- PAGINACIÓN (solo agregado) -->
+          <div class="paginacion" data-tbody="tabla-pqr" style="margin-top:10px;text-align:center;">
+            <button class="btn-prev">⬅️</button>
+            <span class="pagina-info"></span>
+            <button class="btn-next">➡️</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- MODAL MENSAJE (DEJADO EXACTO COMO EN TU ORIGINAL) -->
+  <div id="modal-mensaje">
+    <div class="modal-content">
+      <span id="modal-mensaje-texto"></span><br><br>
+      <button class="btn-cerrar" onclick="document.getElementById('modal-mensaje').style.display='none'">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- SCRIPTS (TUS SCRIPTS QUEDAN IGUAL, LOS DEJÉ DONDE ESTABAN) -->
+  <script src="/paneladmi/paneladmi.js"></script>
+
+  <script>
+    // Bloquear botón atrás del navegador
+    history.pushState(null, '', location.href);
+    window.addEventListener('popstate', function(event) {
+      history.pushState(null, '', location.href);
+    });
+  </script>
+  <script>
+    // Si otra pestaña estableció el marcador de logout, redirigir de inmediato
+    try {
+      if (localStorage.getItem('suono_logged_out')) {
+        localStorage.removeItem('suono_logged_out');
+        window.location.replace('/');
+      }
+    } catch(e) {}
+
+    window.addEventListener('pageshow', function(event) {
+      if (localStorage.getItem('suono_logged_out')) {
+        try { localStorage.removeItem('suono_logged_out'); } catch(e) {}
+        window.location.replace('/');
+      }
+    });
+  </script>
+
+  <script>
+    function mostrarModalMensaje(texto) {
+      document.getElementById('modal-mensaje-texto').innerText = texto;
+      document.getElementById('modal-mensaje').style.display = 'flex';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const navLinks = document.querySelectorAll('.nav-link');
+      const sections = document.querySelectorAll('.section');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          navLinks.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+
+          const target = link.dataset.section;
+          sections.forEach(sec => {
+            sec.style.display = (sec.id === target) ? 'block' : 'none';
+          });
+        });
+      });
+    });
+  </script>
+
+  <!-- PAGINACIÓN GENÉRICA (solo agregada) -->
+  <script>
+    (function () {
+      const ROWS_PER_PAGE = 5;
+
+      // Mantener paginadores creados para referencia si se requiere (clave: elemento .paginacion)
+      const paginadores = new WeakMap();
+
+      function findTbody(container, targetId) {
+        if (!targetId) return null;
+        const el = document.getElementById(targetId);
+        if (el) {
+          if (el.tagName.toLowerCase() === 'tbody') return el;
+          if (el.tagName.toLowerCase() === 'table') return el.querySelector('tbody') || null;
+        }
+        // fallback: si no existe id, intentar la tabla inmediatamente anterior al contenedor
+        const prev = container.previousElementSibling;
+        if (prev && prev.tagName.toLowerCase() === 'table') return prev.querySelector('tbody') || null;
+        // fallback: buscar la primera tabla dentro del mismo bloque (section)
+        const section = container.closest('.section') || container.parentElement;
+        if (section) {
+          const tbl = section.querySelector('table');
+          if (tbl) return tbl.querySelector('tbody') || null;
+        }
+        return null;
+      }
+
+      function createPaginador(container) {
+        // evitar recrear
+        if (paginadores.has(container)) return paginadores.get(container);
+
+        const paginator = {
+          container,
+          targetId: container.dataset.tbody || null,
+          tbody: null,
+          page: 1,
+          rowsPerPage: ROWS_PER_PAGE,
+          totalPages: 1,
+          observer: null,
+          btnPrev: null,
+          btnNext: null,
+          info: null,
+          init() {
+            this.tbody = findTbody(container, this.targetId);
+            // crear/obtener controles si no existen
+            this.btnPrev = container.querySelector('.btn-prev') || createButton('btn-prev', '⬅️');
+            this.btnNext = container.querySelector('.btn-next') || createButton('btn-next', '➡️');
+            this.info = container.querySelector('.pagina-info') || document.createElement('span');
+            this.info.className = 'pagina-info';
+            // ensure info in DOM
+            if (!container.contains(this.info)) {
+              this.btnPrev.after(this.info);
+            }
+            // attach buttons if they were created
+            if (!container.querySelector('.btn-prev')) container.insertBefore(this.btnPrev, container.firstChild);
+            if (!container.querySelector('.btn-next')) container.appendChild(this.btnNext);
+
+            // eventos
+            this.btnPrev.onclick = () => {
+              if (this.page > 1) { this.page--; this.render(); }
+            };
+            this.btnNext.onclick = () => {
+              if (this.page < this.totalPages) { this.page++; this.render(); }
+            };
+
+            // si no existe tabla/tbody, deshabilitar botones
+            if (!this.tbody) {
+              this.info.textContent = 'Sin tabla';
+              this.btnPrev.disabled = true;
+              this.btnNext.disabled = true;
+              return;
+            }
+
+            // observer para cambios en el tbody (filas agregadas/eliminadas)
+            const config = { childList: true };
+            this.observer = new MutationObserver(() => this.recalculate());
+            this.observer.observe(this.tbody, config);
+
+            // primera vez
+            this.recalculate();
+          },
+          recalculate() {
+            const rows = Array.from(this.tbody.querySelectorAll('tr'));
+            this.totalPages = Math.max(1, Math.ceil(rows.length / this.rowsPerPage));
+            if (this.page > this.totalPages) this.page = this.totalPages;
+            if (rows.length === 0) this.page = 1;
+            this.render();
+          },
+          render() {
+            const rows = Array.from(this.tbody ? this.tbody.querySelectorAll('tr') : []);
+            if (rows.length === 0) {
+              this.info.textContent = 'Sin datos';
+              this.btnPrev.disabled = true;
+              this.btnNext.disabled = true;
+              return;
+            }
+            rows.forEach((row, idx) => {
+              row.style.display = (idx >= (this.page - 1) * this.rowsPerPage && idx < this.page * this.rowsPerPage) ? '' : 'none';
+            });
+            this.info.textContent = `Página ${this.page} de ${this.totalPages}`;
+            this.btnPrev.disabled = this.page === 1;
+            this.btnNext.disabled = this.page === this.totalPages;
+          },
+          disconnect() {
+            if (this.observer) this.observer.disconnect();
+          }
+        };
+
+        paginadores.set(container, paginator);
+        paginator.init();
+        return paginator;
+      }
+
+      function createButton(cls, text) {
+        const b = document.createElement('button');
+        b.className = cls;
+        b.type = 'button';
+        b.innerText = text;
+        return b;
+      }
+
+      // Inicializa todos los paginadores presentes
+      function initAll() {
+        const containers = document.querySelectorAll('.paginacion');
+        containers.forEach(c => createPaginador(c));
+      }
+
+      // Función global compatible por si alguna parte del proyecto llama a inicializarPaginacion(...)
+      window.inicializarPaginacion = function (tbodyOrTableId, paginacionId) {
+        // si se pasa paginacionId (id de div de paginacion), buscar por id
+        let container = null;
+        if (paginacionId) container = document.getElementById(paginacionId);
+        if (!container && tbodyOrTableId) container = document.querySelector(`.paginacion[data-tbody="${tbodyOrTableId}"]`);
+        if (!container) {
+          // fallback: buscar la primera .paginacion en la página
+          container = document.querySelector('.paginacion');
+        }
+        if (!container) return;
+        // si se encontró, asegurar que data-tbody esté seteado
+        if (tbodyOrTableId && !container.dataset.tbody) container.dataset.tbody = tbodyOrTableId;
+        createPaginador(container);
+      };
+
+      // Exponer un refresco manual si se requiere
+      window.refrescarPaginacion = function (tbodyOrTableId) {
+        const container = document.querySelector(`.paginacion[data-tbody="${tbodyOrTableId}"]`) || document.querySelector('.paginacion');
+        if (!container) return;
+        const pag = paginadores.get(container);
+        if (pag) pag.recalculate();
+        else createPaginador(container);
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initAll();
+      });
+    })();
+  </script>
+
+</body>
+</html>

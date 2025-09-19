@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Clientes</title>
+  <!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Clientes</title>
+    <link rel="stylesheet" href="/portal/inicio.css">
+    <style>
+      /* ====== Modal ====== */
+      .modal-politica {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.6);
+      }
+      .modal-politica-content {
+        background: #6c3ef5;
+        margin: 10% auto;
+        padding: 20px;
+        width: 60%;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #000;
+      }
+      .close-politica {
+        float: right;
+        font-size: 22px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .close-politica:hover {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="form-container">
+      <h2>Registro de Cliente</h2>
+      <form id="formRegistro">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
+
+        <label for="email">Correo:</label>
+        <input type="email" id="email" name="email" placeholder="Ingrese su correo" required>
+
+        <label for="telefono">Teléfono:</label>
+        <input type="text" id="telefono" name="telefono" placeholder="Ingrese su teléfono" required maxlength="10">
+
+        <label for="contraseña">Contraseña:</label>
+        <div class="password-wrapper">
+          <input type="password" id="contraseña" name="contraseña" placeholder="Ingrese su contraseña" required>
+          <span class="toggle-eye" id="toggleContraseña">👁️</span>
+        </div>
+
+        <label for="confirmarContraseña">Confirmar Contraseña:</label>
+        <div class="password-wrapper">
+          <input type="password" id="confirmarContraseña" name="confirmarContraseña" placeholder="Confirme su contraseña" required>
+          <span class="toggle-eye" id="toggleConfirmarContraseña">👁️</span>
+        </div>
+
+        <!-- 🔹 Enlace a política -->
+        <div style="margin: 15px 0;">
+          <a href="#" id="verPolitica">
+            📄 Ver Política de Privacidad y Términos
+          </a>
+        </div>
+
+        <!-- 🔹 Checkbox actual -->
+        <label>
+          <input type="checkbox" id="aceptaTerminos" required>
+          Acepto los términos y la política de privacidad
+        </label>
+
+        <!-- 🔹 NUEVO: Checkbox y texto desplegable de Suono Logistic -->
+        <label>
+          <input type="checkbox" id="consentimiento" required>
+          Acepto los <a href="#" id="toggleTerminos">Términos y Condiciones</a>.
+        </label>
+
+        <div id="textoTerminos" style="display:none; margin-top:10px; padding:10px; border:1px solid #ccc;">
+          <h3>Términos y Condiciones</h3>
+          <p>Sus datos serán tratados según la Ley 1581 de 2012...</p>
+          <p>Al aceptar, usted autoriza a <b>Suono Logistic</b> a usar sus datos para gestión de eventos, reservas, etc.</p>
+        </div>
+
+        <button type="submit">Registrar</button>
+        <p id="errorMensaje" style="color:red;"></p>
+      </form>
+    </div>
+
+    <!-- 🔹 Modal de registro exitoso -->
+    <div class="modal" id="modalExito">
+      <div class="modal-content">
+        <h2>Registro exitoso</h2>
+        <button id="cerrarModal">Continuar</button>
+      </div>
+    </div>
+
+    <!-- 🔹 Modal de Política -->
+    <div class="modal-politica" id="modalPolitica">
+      <div class="modal-politica-content">
+        <span id="cerrarPolitica" class="close-politica">&times;</span>
+        <h2>Política de Privacidad y Términos</h2>
+        <p>
+          En Suono Logistic nos comprometemos a proteger sus datos.  
+          Toda la información será tratada conforme a la Ley 1581 de 2012 y normativas vigentes.  
+        </p>
+        <p>
+          Al registrarse, usted acepta el uso de sus datos únicamente para gestión de eventos, reservas y comunicación comercial relacionada.
+        </p>
+        <p>
+          Puede solicitar en cualquier momento la eliminación de sus datos escribiendo a nuestro correo oficial.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Inputs
+      const nombreInput = document.getElementById("nombre");
+      const apellidoInput = document.getElementById("apellido");
+      const emailInput = document.getElementById("email");
+      const telefonoInput = document.getElementById("telefono");
+      const contraseñaInput = document.getElementById("contraseña");
+      const confirmarContraseñaInput = document.getElementById("confirmarContraseña");
+      const aceptaTerminos = document.getElementById("aceptaTerminos");
+      const consentimiento = document.getElementById("consentimiento");
+      const errorMensaje = document.getElementById("errorMensaje");
+
+      // Modal registro
+      const modal = document.getElementById("modalExito");
+      const cerrarModal = document.getElementById("cerrarModal");
+
+      // Modal política
+      const modalPolitica = document.getElementById("modalPolitica");
+      const btnPolitica = document.getElementById("verPolitica");
+      const cerrarPolitica = document.getElementById("cerrarPolitica");
+
+      // Iconos de ojo
+      const toggleContraseña = document.getElementById("toggleContraseña");
+      const toggleConfirmarContraseña = document.getElementById("toggleConfirmarContraseña");
+
+      // Evitar números o símbolos en nombre y apellido
+      [nombreInput, apellidoInput].forEach(input => {
+        input.addEventListener("input", function() {
+          this.value = this.value.replace(/[^A-Za-zÁÉÍÓÚáéíóúÑñ ]/g, '');
+        });
+      });
+
+      // Evitar letras en teléfono
+      telefonoInput.addEventListener("input", function() {
+        this.value = this.value.replace(/\D/g, '');
+      });
+
+      // Validación de coincidencia de contraseñas en tiempo real
+      confirmarContraseñaInput.addEventListener("input", function() {
+        if (contraseñaInput.value !== confirmarContraseñaInput.value) {
+          errorMensaje.textContent = "Las contraseñas no coinciden.";
+        } else {
+          errorMensaje.textContent = "";
+        }
+      });
+
+      // Toggle contraseña y cambio de emoji
+      function togglePassword(input, icon) {
+        if (input.type === "password") {
+          input.type = "text";
+          icon.textContent = "🙈"; // ojo abierto
+        } else {
+          input.type = "password";
+          icon.textContent = "👁️"; // ojo cerrado
+        }
+      }
+
+      toggleContraseña.addEventListener("click", () => togglePassword(contraseñaInput, toggleContraseña));
+      toggleConfirmarContraseña.addEventListener("click", () => togglePassword(confirmarContraseñaInput, toggleConfirmarContraseña));
+
+      // Toggle mostrar/ocultar texto de términos
+      document.getElementById("toggleTerminos").addEventListener("click", (e)=>{
+        e.preventDefault();
+        const box = document.getElementById("textoTerminos");
+        box.style.display = box.style.display === "none" ? "block" : "none";
+      });
+
+      // Mostrar modal de éxito
+      function mostrarModalExito() {
+        modal.classList.add("show");
+      }
+
+      // Cerrar modal éxito y redirigir
+      cerrarModal.onclick = function() {
+        modal.classList.remove("show");
+        setTimeout(() => {
+          window.location.href = "/portal/panel_cliente.html";
+        }, 300);
+      };
+
+      window.onclick = function(event) {
+        if (event.target === modal) {
+          modal.classList.remove("show");
+          setTimeout(() => {
+            window.location.href = "/portal/panel_cliente.html";
+          }, 300);
+        }
+        if (event.target === modalPolitica) {
+          modalPolitica.style.display = "none";
+        }
+      };
+
+      // Abrir modal política
+      btnPolitica.addEventListener("click", (e) => {
+        e.preventDefault();
+        modalPolitica.style.display = "block";
+      });
+
+      // Cerrar modal política
+      cerrarPolitica.addEventListener("click", () => {
+        modalPolitica.style.display = "none";
+      });
+
+      // Validación y envío al backend
+      document.getElementById("formRegistro").addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const nombre = nombreInput.value.trim();
+        const apellido = apellidoInput.value.trim();
+        const email = emailInput.value.trim();
+        const telefono = telefonoInput.value.trim();
+        const contraseña = contraseñaInput.value;
+        const confirmarContraseña = confirmarContraseñaInput.value;
+        const acepta = aceptaTerminos.checked;
+        const consiente = consentimiento.checked;
+
+        if (!nombre) { errorMensaje.textContent = "Ingrese su nombre."; return; }
+        if (!apellido) { errorMensaje.textContent = "Ingrese su apellido."; return; }
+
+        const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        if (!correoValido) { errorMensaje.textContent = "Ingrese un correo válido."; return; }
+
+        const telefonoValido = /^\d{1,10}$/.test(telefono);
+        if (!telefonoValido) { errorMensaje.textContent = "El teléfono debe tener máximo 10 dígitos y solo números."; return; }
+
+        if (contraseña.length < 8) { errorMensaje.textContent = "La contraseña debe tener mínimo 8 caracteres."; return; }
+        if (contraseña !== confirmarContraseña) { errorMensaje.textContent = "Las contraseñas no coinciden."; return; }
+
+        if (!acepta) { errorMensaje.textContent = "Debes aceptar la política de privacidad."; return; }
+        if (!consiente) { errorMensaje.textContent = "Debes aceptar los Términos y Condiciones de Suono Logistic."; return; }
+
+        try {
+    const res = await fetch("/api/cliente/registro", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              nombre,
+              apellido,
+              email,
+              telefono,
+              password: contraseña,
+              aceptaTerminos: acepta,
+              consentimiento: consiente
+            })
+          });
+
+          const data = await res.json();
+
+          if (res.ok) {
+            errorMensaje.textContent = "";
+            this.reset();
+            mostrarModalExito();
+          } else {
+            errorMensaje.textContent = data.mensaje || "Error al registrar cliente.";
+          }
+        } catch (err) {
+          console.error(err);
+          errorMensaje.textContent = "Error de conexión con el servidor.";
+        }
+      });
+    </script>
+
+  </body>
+  <script src="panelCliente.js"></script>
+  </html>

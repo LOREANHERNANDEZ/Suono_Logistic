@@ -1,0 +1,119 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(160deg, #0d0c1d, #1a1134, #251f47);
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+/* Contenedor principal más pequeño */
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 800px; /* <--- REDUCIDO */
+  background: rgba(15, 15, 30, 0.7);
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Lado izquierdo con blur artístico */
+.left-section {
+  width: 45%; /* <--- MÁS ANGOSTO */
+  background: linear-gradient(to bottom right, #2b2d42, #4b00ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.image-placeholder {
+  width: 90%;
+  height: 90%;
+  background: radial-gradient(ellipse at center, #4b00ff, #1f1a3a);
+  filter: blur(80px);
+  opacity: 0.9;
+  border-radius: 20px;
+}
+
+/* Formulario a la derecha más compacto */
+.right-section {
+  width: 55%; /* <--- MÁS ANGOSTO */
+  padding: 30px; /* <--- MÁS PEQUEÑO */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.right-section h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  text-align: center;
+  color: #ffffff;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-weight: 500;
+  font-size: 14px;
+  color: #ddd;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  outline: none;
+}
+
+input:focus {
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 8px rgba(75, 0, 255, 0.4);
+}
+
+button {
+  background-color: #4b00ff;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #6933ff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(75, 0, 255, 0.5);
+}
+
+.center-text {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.center-text a {
+  color: #b089ff;
+  text-decoration: none;
+  font-weight: bold;
+}
