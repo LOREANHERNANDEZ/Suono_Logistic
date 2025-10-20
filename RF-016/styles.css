@@ -1,0 +1,117 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  margin: 0;
+  color: #000;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+h2 {
+  margin-top: 20px;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-info .logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.user-info input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search-section input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.btn, .btn-icon {
+  background-color: #594fbb;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-icon {
+  background-color: #ddd;
+  color: black;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn.cerrar {
+  background-color: #594fbb;
+}
+
+.table-container {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+a {
+  color: #594fbb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}

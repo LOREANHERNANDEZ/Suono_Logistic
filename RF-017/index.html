@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Historial de Reservas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <div class="profile-icon">👤</div>
+    <div class="user-info">
+      <strong>Nombre Usuario: Administrador</strong>
+      <small>Cargo: Rol Gestor de Eventos</small>
+    </div>
+  </header>
+
+  <div class="top-bar">
+    <div class="search-box">
+      🔍
+      <input type="text" id="busqueda" placeholder="Buscar reservaciones...">
+    </div>
+    <button onclick="cerrarSesion()">Cerrar Sesión</button>
+  </div>
+
+  <h1>Historial de Reservas</h1>
+
+  <table id="tablaReservas">
+    <thead>
+      <tr>
+        <th>Número de Reserva</th>
+        <th>Cliente</th>
+        <th>Evento</th>
+        <th>Equipos</th>
+        <th>Fecha</th>
+        <th>Estado</th>
+        <th>Detalles</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td>Stiven Ferrin</td>
+        <td>Asamblea de conjunto</td>
+        <td>Controles de votación</td>
+        <td>Inicio: 02/06/2025<br>Fin: 02/06/2025</td>
+        <td>Finalizado</td>
+        <td><span class="ver-link">Ver</span></td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>Johana Zambrano</td>
+        <td>Matrimonio</td>
+        <td>Sonido, Luces, DJ</td>
+        <td>Inicio: 06/06/2025<br>Fin: 07/06/2025</td>
+        <td>Cancelado</td>
+        <td><span class="ver-link">Ver</span></td>
+      </tr>
+      <tr>
+        <td>003</td>
+        <td>Lorean Hernandez</td>
+        <td>Cumpleaños Infantil</td>
+        <td>Sonido, Luces, DJ</td>
+        <td>Inicio: 25/05/2025<br>Fin: 25/05/2025</td>
+        <td>Finalizado</td>
+        <td><span class="ver-link">Ver</span></td>
+      </tr>
+      <tr>
+        <td>004</td>
+        <td>Harold Riaño</td>
+        <td>Concierto</td>
+        <td>Sonido, Luces, Micrófonos</td>
+        <td>Inicio: 08/06/2025<br>Fin: 09/06/2025</td>
+        <td>Próximo</td>
+        <td><span class="ver-link">Ver</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="regresar-btn" onclick="regresar()">Regresar</button>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seguimiento de Reservas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="top-bar">
+      <div class="user-info">
+        <input type="text" placeholder="Nombre de usuario" />
+        <input type="text" placeholder="Cargo o rol" />
+      </div>
+      <div class="search-section">
+        <input type="text" placeholder="Buscar" />
+        <button class="btn-icon">🔍</button>
+        <button class="btn cerrar">⏻ Cerrar Sesión</button>
+      </div>
+    </header>
+
+    <h2>Seguimiento de Reservas</h2>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Número de Reserva</th>
+            <th>Cliente</th>
+            <th>Fecha y Hora</th>
+            <th>Evento</th>
+            <th>Equipos</th>
+            <th>Estado</th>
+            <th>Última Modificación</th>
+            <th>Detalles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>Valeria Bohorquez</td>
+            <td>23/08/2025 7:00 PM</td>
+            <td>Cumpleaños</td>
+            <td>Sonido</td>
+            <td>Confirmado</td>
+            <td>02/06/2025 7:00 PM</td>
+            <td><a href="#">Ver</a> | <a href="#">Editar</a></td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>Juan Perez</td>
+            <td>15/09/2025 6:00 PM</td>
+            <td>Boda</td>
+            <td>Luces, DJ</td>
+            <td>Pendiente</td>
+            <td>01/08/2025 10:00 AM</td>
+            <td><a href="#">Ver</a> | <a href="#">Editar</a></td>
+          </tr>
+          <tr>
+            <td>003</td>
+            <td>Maria Lopez</td>
+            <td>10/10/2025 8:00 PM</td>
+            <td>Concierto</td>
+            <td>Escenario, Micrófonos</td>
+            <td>Confirmado</td>
+            <td>05/09/2025 3:00 PM</td>
+            <td><a href="#">Ver</a> | <a href="#">Editar</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="actions">
+      <button class="btn">Modificar</button>
+      <button class="btn">📄 Generar Informe</button>
+      <button class="btn">🔄 Actualizar</button>
+    </div>
+  </div>
+
+  <script src=".js"></script>
+</body>
+</html>
