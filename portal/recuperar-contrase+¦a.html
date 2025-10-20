@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <style>
+        /* Estilos de la página de recuperación (puedes adaptarlos) */
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #121212; /* Fondo oscuro */
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 600px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(135deg, #4b0082, #2c0054);
+        }
+
+        .right-panel {
+            flex: 1;
+            padding: 40px;
+            background-color: #1e1e1e;
+            text-align: center;
+        }
+
+        .right-panel h2 {
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #ccc;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            background-color: #2b2b2b;
+            color: #fff;
+            border-radius: 8px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #8a2be2;
+            box-shadow: 0 0 5px rgba(138,43,226,0.5);
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            margin-bottom: 10px;
+        }
+
+        .btn-enviar {
+            background: linear-gradient(135deg, #8a2be2, #4b0082);
+            color: #fff;
+        }
+
+        .btn-enviar:hover {
+            background: linear-gradient(135deg, #4b0082, #8a2be2);
+            transform: translateY(-2px);
+        }
+
+        .btn-volver {
+            background-color: transparent;
+            color: #8a2be2;
+            border: 1px solid #8a2be2;
+        }
+
+        .btn-volver:hover {
+            background-color: #8a2be2;
+            color: #fff;
+        }
+
+        .error-message {
+            margin-top: 10px;
+            color: #ff4d4f;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel"></div>
+        <div class="right-panel">
+            <h2>Recuperar contraseña</h2>
+            <form id="recuperarForm">
+                <div class="input-group">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
+                </div>
+                <button type="submit" class="btn btn-enviar">Enviar enlace</button>
+                <div id="errorMensaje" class="error-message"></div>
+            </form>
+            <button class="btn btn-volver" onclick="window.location.href='/portal/loginCliente.html'">Volver al login</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+body {
+  font-family: sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 40px;
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.btn-registrar {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background-color: #555c6d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+label {
+  display: block;
+  margin-top: 30px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 0.9rem;
+  color: #888;
+}
+
+.visily {
+  color: #2c6df0;
+  font-weight: bold;
+}

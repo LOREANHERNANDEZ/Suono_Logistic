@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Cliente - Suono</title>
+    <style>
+        /* ====== Reset básico ====== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ====== Fondo y contenedor ====== */
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #6b0f9c, #2575fc); /* degradado morado a azul */
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        /* ====== Tarjeta de login ====== */
+        .login-card {
+            background-color: #fff;
+            padding: 30px 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .login-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .login-card h2 {
+            margin-bottom: 20px;
+            color: #6b0f9c; /* morado */
+        }
+
+        /* ====== Inputs ====== */
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #2575fc; /* azul */
+            box-shadow: 0 0 5px rgba(37,117,252,0.5);
+            outline: none;
+        }
+
+        /* ====== Botón ====== */
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #6b0f9c, #2575fc); /* degradado morado a azul */
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-login:hover {
+            background: linear-gradient(135deg, #2575fc, #6b0f9c);
+            transform: translateY(-2px);
+        }
+
+        /* ====== Mensajes de error ====== */
+        .error-message {
+            margin-top: 10px;
+            color: #ff4d4f;
+            font-size: 0.9rem;
+        }
+
+        /* ====== Texto pequeño ====== */
+        .small-text {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #555;
+        }
+        
+        /* Alineación del texto y los enlaces */
+        .links-container {
+            margin-top: 15px;
+            font-size: 0.85rem;
+            color: #555;
+            text-align: center;
+        }
+
+        .links-container a {
+            color: #2575fc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .links-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <h2>Iniciar Sesión</h2>
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" placeholder="ejemplo@correo.com" required>
+                </div>
+                <div class="input-group" style="position:relative;">
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" id="contraseña" placeholder="********" required>
+                    <button type="button" id="togglePassword" aria-label="Mostrar contraseña" style="position:absolute; right:12px; top:36px; background:none; border:none; cursor:pointer;">
+                      <svg id="eyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10z" stroke="#6b0f9c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.5" stroke="#6b0f9c" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+                <button type="submit" class="btn-login">Ingresar</button>
+                <div id="errorMensaje" class="error-message"></div>
+            </form>
+            <div class="links-container">
+                <a href="/recuperar">¿Olvidaste tu contraseña?</a>
+                <p>¿No tienes cuenta? <a href="/portal/registroClientes.html">Regístrate</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="loginCliente.js"></script>
+</body>
+</html>
